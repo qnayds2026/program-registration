@@ -3,7 +3,7 @@ import { MessageCircle, ExternalLink } from "lucide-react";
 
 export default function Footer({ onRegisterClick }) {
   const lmsUrl = import.meta.env.VITE_LMS_URL || "https://lms.qnayds.in/register";
-  const whatsappUrl = "https://api.whatsapp.com/send/?phone=919074871204&text=Hi%20QNAYDS%20Team%2C%20I%20need%20help%20with%20program%20registration%20and%20certificates.&type=phone_number&app_absent=0";
+  const whatsappUrl = "https://api.whatsapp.com/send/?phone=919074871204&text=Hi%20QNAYDS%20Team%2C%20I%20attended%20a%20program%20and%20need%20help%20claiming%20my%20certificate.&type=phone_number&app_absent=0";
 
   const scrollTo = (e, id) => {
     e.preventDefault();
@@ -25,8 +25,8 @@ export default function Footer({ onRegisterClick }) {
               className="h-8 w-auto object-contain mx-auto md:mx-0"
             />
             <p className="text-xs sm:text-sm text-slate-500 max-w-md">
-              Official registration portal for QNAYDS webinars, industrial
-              workshops, and internships. Integrated with the QNAYDS LMS.
+              Official certificate verification and issuance portal for attendees of QNAYDS
+              webinars, offline workshops, and technical internships. Integrated with the QNAYDS LMS.
             </p>
           </div>
 
@@ -35,9 +35,9 @@ export default function Footer({ onRegisterClick }) {
             <button
               type="button"
               onClick={onRegisterClick}
-              className="hover:text-blue-600 transition-colors"
+              className="hover:text-blue-600 transition-colors cursor-pointer"
             >
-              Register
+              Claim Certificate
             </button>
             <a
               href="#certificate-guide"
@@ -70,7 +70,7 @@ export default function Footer({ onRegisterClick }) {
         {/* Copyright */}
         <div className="mt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500">
           <p>© {new Date().getFullYear()} QNAYDS. All rights reserved.</p>
-          <p>Public External Program Registration & LMS Certificate Verification</p>
+          <p>Official External Program Attendance &amp; Certificate Issuance</p>
         </div>
       </div>
     </footer>

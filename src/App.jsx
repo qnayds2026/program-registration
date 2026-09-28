@@ -12,7 +12,7 @@ export default function App() {
 
   const whatsappPhone = "919074871204";
   const whatsappMessage =
-    "Hi QNAYDS Team, I need help regarding external program registration and LMS certificate access.";
+    "Hi QNAYDS Team, I attended a program and need help claiming my certificate on the LMS.";
   const whatsappUrl = `https://api.whatsapp.com/send/?phone=${whatsappPhone}&text=${encodeURIComponent(
     whatsappMessage
   )}&type=phone_number&app_absent=0`;
@@ -42,12 +42,12 @@ export default function App() {
       {/* Navigation */}
       <Navbar onRegisterClick={scrollToRegistration} />
 
-      {/* Main Flow: Simple, Clean & Focused */}
+      {/* Main Flow */}
       <main className="flex-1">
         {/* 1. Hero */}
         <Hero onRegisterClick={scrollToRegistration} />
 
-        {/* 2. Program Registration Form & LMS Integration */}
+        {/* 2. Program Registration Form & LMS Integration (Kept exactly as requested) */}
         <ProgramRegistration />
 
         {/* 3. How to Get Your Certificate Guide */}
@@ -74,15 +74,15 @@ export default function App() {
         </svg>
       </a>
 
-      {/* Floating Register CTA */}
+      {/* Floating CTA */}
       {showFloatingCta && (
         <div className="fixed bottom-24 right-5 sm:right-6 z-40 flex items-center gap-2 animate-in fade-in slide-in-from-bottom-3 duration-200">
           <button
             type="button"
             onClick={scrollToRegistration}
-            className="flex items-center gap-2 rounded-full bg-blue-600 px-4 py-2.5 text-xs sm:text-sm font-bold text-white shadow-xl shadow-blue-500/25 transition-all duration-200 hover:-translate-y-0.5 hover:bg-blue-700"
+            className="flex items-center gap-2 rounded-full bg-blue-600 px-4 py-2.5 text-xs sm:text-sm font-bold text-white shadow-xl shadow-blue-500/25 transition-all duration-200 hover:-translate-y-0.5 hover:bg-blue-700 cursor-pointer"
           >
-            <span>Register Now</span>
+            <span>Claim Certificate</span>
             <ArrowRight className="h-4 w-4" />
           </button>
 
@@ -90,7 +90,7 @@ export default function App() {
             type="button"
             onClick={scrollToTop}
             aria-label="Scroll to top"
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-md transition-colors hover:bg-slate-100"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-md transition-colors hover:bg-slate-100 cursor-pointer"
           >
             <ArrowUp className="h-4 w-4" />
           </button>

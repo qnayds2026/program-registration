@@ -28,21 +28,21 @@ export default function Hero({ onRegisterClick }) {
           {/* Announcement Badge */}
           <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50/90 px-4 py-1.5 text-xs sm:text-sm font-semibold text-blue-700 shadow-sm">
             <Sparkles className="h-4 w-4 text-blue-600 animate-pulse" />
-            <span>Official QNAYDS Program Hub • Now Open for Registrations</span>
+            <span>Official QNAYDS Certificate Portal • For Program Attendees</span>
           </div>
 
           {/* Main Title */}
           <h1 className="mt-6 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl leading-[1.18]">
-            External Program Registration &{" "}
+            Claim Your Program Attendance &amp;{" "}
             <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-              LMS Certification
+              LMS Certificate
             </span>
           </h1>
 
           {/* Subtitle */}
           <p className="mt-5 text-base sm:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
-            Register for your upcoming <strong>Webinar</strong>, <strong>Workshop</strong>, or <strong>Internship</strong>.
-            Follow the steps below to participate and claim your verified certificate through the QNAYDS Learning Management System.
+            Attended a QNAYDS <strong>Webinar</strong>, <strong>Offline Workshop</strong>, or <strong>Internship</strong>?
+            Submit your details below to record your attendance, then create or sign in to your LMS account with the <strong>same email</strong> to access and download your verified certificate.
           </p>
 
           {/* Call to Actions */}
@@ -50,9 +50,9 @@ export default function Hero({ onRegisterClick }) {
             <button
               type="button"
               onClick={onRegisterClick}
-              className="group inline-flex w-full sm:w-auto items-center justify-center gap-2.5 rounded-full bg-blue-600 px-8 py-3.5 text-base font-bold text-white shadow-lg shadow-blue-500/25 transition-all duration-200 hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-xl hover:shadow-blue-500/35"
+              className="group inline-flex w-full sm:w-auto items-center justify-center gap-2.5 rounded-full bg-blue-600 px-8 py-3.5 text-base font-bold text-white shadow-lg shadow-blue-500/25 transition-all duration-200 hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-xl hover:shadow-blue-500/35 cursor-pointer"
             >
-              <span>Register for a Program</span>
+              <span>Claim Your Certificate</span>
               <ArrowRight className="h-5 w-5 transition-transform duration-200 group-hover:translate-x-1" />
             </button>
 
@@ -72,8 +72,8 @@ export default function Hero({ onRegisterClick }) {
                 <UserCheck className="h-5 w-5" />
               </div>
               <div>
-                <p className="text-xs sm:text-sm font-bold text-slate-900">1. Instant Registration</p>
-                <p className="text-[11px] text-slate-500">Pick program & reserve seat</p>
+                <p className="text-xs sm:text-sm font-bold text-slate-900">1. Submit Attendance</p>
+                <p className="text-[11px] text-slate-500">Enter program &amp; your full name</p>
               </div>
             </div>
 
@@ -82,8 +82,8 @@ export default function Hero({ onRegisterClick }) {
                 <ShieldCheck className="h-5 w-5" />
               </div>
               <div>
-                <p className="text-xs sm:text-sm font-bold text-slate-900">2. Automated LMS Sync</p>
-                <p className="text-[11px] text-slate-500">Links with student profile</p>
+                <p className="text-xs sm:text-sm font-bold text-slate-900">2. Create LMS Account</p>
+                <p className="text-[11px] text-slate-500">Sign up with the exact same email</p>
               </div>
             </div>
 
@@ -92,7 +92,7 @@ export default function Hero({ onRegisterClick }) {
                 <Award className="h-5 w-5" />
               </div>
               <div>
-                <p className="text-xs sm:text-sm font-bold text-slate-900">3. Verified Certificate</p>
+                <p className="text-xs sm:text-sm font-bold text-slate-900">3. Download Certificate</p>
                 <p className="text-[11px] text-slate-500">Claim in LMS certificates tab</p>
               </div>
             </div>

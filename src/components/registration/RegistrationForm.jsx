@@ -7,12 +7,8 @@ import {
   RefreshCw,
   Calendar,
   Tag,
-  CheckCircle2,
-  Award,
-  Sparkles,
-  Mail,
-  GraduationCap,
-  ExternalLink,
+  Info,
+  ShieldCheck,
 } from "lucide-react";
 
 export default function RegistrationForm({
@@ -33,7 +29,6 @@ export default function RegistrationForm({
     phone: "",
   });
 
-  const lmsUrl = import.meta.env.VITE_LMS_URL || "https://lms.qnayds.in";
 
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
@@ -45,12 +40,12 @@ export default function RegistrationForm({
   const validateField = (field, value) => {
     switch (field) {
       case "program": {
-        if (!value) return "Please select a program.";
+        if (!value) return "Please select the program you attended.";
         return "";
       }
       case "name": {
         const trimmed = (value || "").trim();
-        if (!trimmed) return "Please enter your name.";
+        if (!trimmed) return "Please enter your full name for the certificate.";
         if (trimmed.length < 2) return "Please enter a valid name (at least 2 characters).";
         return "";
       }
@@ -149,59 +144,36 @@ export default function RegistrationForm({
   };
 
   return (
-    <div className="w-full max-w-full rounded-3xl border border-slate-200 bg-white p-5 sm:p-8 shadow-xl">
-      <div className="mb-5">
-        <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">
-          Ready to join the program?
+    <div className="w-full rounded-xl border border-slate-200 bg-white p-6 sm:p-8 shadow-xs">
+      {/* Form Header */}
+      <div className="border-b border-slate-100 pb-5 mb-6">
+        <span className="text-[11px] font-semibold uppercase tracking-wider text-blue-600">
+          Step 1 of 2
+        </span>
+        <h3 className="text-xl font-bold text-slate-900 tracking-tight mt-0.5">
+          Certificate Claim Form
         </h3>
-        <p className="mt-1.5 text-xs sm:text-sm text-slate-600 leading-relaxed">
-          Register for your selected QNAYDS program and take the next step in
-          your learning journey.
+        <p className="mt-1 text-xs sm:text-sm text-slate-500">
+          Confirm the program you completed and enter your details to generate your certificate.
         </p>
-      </div>
-
-      {/* COMPACT & CATCHY LMS CERTIFICATE NOTICE */}
-      <div className="mb-5 flex items-start sm:items-center gap-3 rounded-2xl border border-amber-300 bg-gradient-to-r from-amber-50 via-amber-50/80 to-orange-50/50 p-3 sm:px-4 sm:py-3 text-left shadow-2xs">
-        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-amber-500 text-white shadow-xs">
-          <Award className="h-5 w-5" />
-        </div>
-        <div className="flex-1 text-xs sm:text-sm text-slate-800 leading-snug">
-          <span className="font-extrabold text-amber-900 mr-1.5 inline-flex items-center gap-1">
-            <Sparkles className="h-3 w-3 text-amber-600 inline shrink-0" />
-            Certificate Note:
-          </span>
-          To receive your certificate, create an account on{" "}
-          <a
-            href={lmsUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-bold text-blue-700 hover:text-blue-900 underline decoration-blue-300 hover:decoration-blue-700 inline-flex items-center gap-0.5"
-          >
-            <span>QNAYDS LMS</span>
-            <ExternalLink className="h-3 w-3" />
-          </a>{" "}
-          using the <strong className="font-bold text-amber-950 underline decoration-amber-400 decoration-2 underline-offset-2">same email</strong> you register with below.
-        </div>
       </div>
 
       {/* API Level Error Banner */}
       {apiError && (
         <div
           role="alert"
-          className="mb-6 flex items-start gap-3 rounded-2xl border border-red-200 bg-red-50 p-4 text-left text-sm text-red-700 animate-in fade-in duration-200"
+          className="mb-6 flex items-start gap-3 rounded-lg border border-red-200 bg-red-50/80 p-3.5 text-left text-xs sm:text-sm text-red-800"
         >
-          <AlertTriangle className="h-5 w-5 shrink-0 text-red-500 mt-0.5" />
+          <AlertTriangle className="h-5 w-5 shrink-0 text-red-600 mt-0.5" />
           <div className="flex-1">
-            <p className="font-semibold">Unable to complete registration</p>
-            <p className="mt-0.5 text-xs leading-relaxed text-red-600">
-              {apiError}
-            </p>
+            <p className="font-semibold">Submission Issue</p>
+            <p className="mt-0.5 text-xs text-red-700">{apiError}</p>
           </div>
           {onClearApiError && (
             <button
               type="button"
               onClick={onClearApiError}
-              className="text-xs font-semibold text-red-600 hover:text-red-800"
+              className="text-xs font-semibold text-red-700 hover:text-red-900"
             >
               Dismiss
             </button>
@@ -209,35 +181,35 @@ export default function RegistrationForm({
         </div>
       )}
 
-      <form onSubmit={handleSubmit} noValidate className="space-y-4 sm:space-y-5 text-left">
-        {/* PROGRAM SELECT - 100% MOBILE RESPONSIVE */}
-        <div className="w-full max-w-full">
+      <form onSubmit={handleSubmit} noValidate className="space-y-5 text-left">
+        {/* PROGRAM SELECT */}
+        <div>
           <label
             htmlFor="program-select"
-            className="block text-xs sm:text-sm font-bold text-slate-700 mb-1.5"
+            className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1.5"
           >
-            Program <span className="text-red-500">*</span>
+            Program You Attended <span className="text-red-500">*</span>
           </label>
 
           {loadingPrograms ? (
-            <div className="flex min-h-[48px] w-full items-center gap-2.5 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-500">
-              <Loader2 className="h-4 w-4 animate-spin text-blue-600" />
-              <span>Loading available programs...</span>
+            <div className="flex min-h-[44px] w-full items-center gap-2.5 rounded-lg border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-xs text-slate-500">
+              <Loader2 className="h-4 w-4 animate-spin text-slate-600" />
+              <span>Loading program directory...</span>
             </div>
           ) : loadProgramsError ? (
-            <div className="rounded-xl border border-red-200 bg-red-50/70 p-3.5 text-xs text-red-700">
+            <div className="rounded-lg border border-red-200 bg-red-50/70 p-3 text-xs text-red-700">
               <p>{loadProgramsError}</p>
               <button
                 type="button"
                 onClick={onRetryLoadPrograms}
-                className="mt-2 inline-flex items-center gap-1.5 font-bold text-blue-700 hover:underline"
+                className="mt-2 inline-flex items-center gap-1.5 font-semibold text-blue-700 hover:underline"
               >
                 <RefreshCw className="h-3.5 w-3.5" />
-                <span>Retry loading programs</span>
+                <span>Retry</span>
               </button>
             </div>
           ) : (
-            <div className="relative w-full max-w-full">
+            <div className="relative w-full">
               <select
                 id="program-select"
                 name="program"
@@ -253,13 +225,11 @@ export default function RegistrationForm({
                 disabled={isSubmitting}
                 aria-invalid={!!errors.program}
                 aria-describedby={errors.program ? "program-error" : undefined}
-                className={`w-full min-h-[48px] max-w-full appearance-none rounded-xl border bg-white pl-4 pr-10 py-3 text-sm sm:text-base font-medium text-slate-900 transition-all focus:outline-none focus:ring-2 truncate ${
-                  errors.program
-                    ? "border-red-300 focus:border-red-500 focus:ring-red-200"
-                    : "border-slate-300 focus:border-blue-500 focus:ring-blue-100"
+                className={`w-full min-h-[44px] appearance-none rounded-lg border bg-white pl-3.5 pr-10 py-2.5 text-sm font-medium text-slate-900 transition-colors focus:ring-2 focus:ring-slate-900/10 focus:border-slate-800 truncate ${
+                  errors.program ? "border-red-300" : "border-slate-300 hover:border-slate-400"
                 }`}
               >
-                <option value="">Select a program</option>
+                <option value="">Select the program you attended</option>
                 {programs.map((prog) => (
                   <option key={prog.id} value={prog.id}>
                     {prog.title} {prog.type ? `(${prog.type})` : ""}
@@ -267,8 +237,7 @@ export default function RegistrationForm({
                 ))}
               </select>
 
-              {/* Custom SVG dropdown chevron */}
-              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3.5 text-slate-500">
+              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-slate-400">
                 <svg className="h-4 w-4 fill-current" viewBox="0 0 20 20">
                   <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
                 </svg>
@@ -276,21 +245,23 @@ export default function RegistrationForm({
             </div>
           )}
 
-          {/* Mobile-Friendly Selected Program Summary Badge */}
+          {/* Selected Program Details */}
           {selectedProgramObj && (
-            <div className="mt-2.5 rounded-xl border border-blue-100 bg-blue-50/60 p-3 text-xs text-slate-700 animate-in fade-in duration-200">
-              <div className="flex flex-wrap items-center justify-between gap-1.5 font-bold text-slate-900">
-                <span className="truncate max-w-[200px] sm:max-w-xs">{selectedProgramObj.title}</span>
-                <span className="inline-flex items-center gap-1 rounded-md bg-blue-100 px-2 py-0.5 text-[11px] font-bold text-blue-700">
+            <div className="mt-2.5 rounded-lg border border-slate-200 bg-slate-50/80 p-3 text-xs text-slate-700">
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <span className="font-semibold text-slate-900 truncate max-w-[260px] sm:max-w-xs">
+                  {selectedProgramObj.title}
+                </span>
+                <span className="inline-flex items-center gap-1 rounded bg-slate-200/80 px-2 py-0.5 text-[11px] font-semibold text-slate-700 uppercase">
                   <Tag className="h-3 w-3" />
-                  <span>{selectedProgramObj.type || "TRACK"}</span>
+                  <span>{selectedProgramObj.type || "PROGRAM"}</span>
                 </span>
               </div>
               {selectedProgramObj.startDate && (
                 <p className="mt-1 flex items-center gap-1 text-[11px] text-slate-500">
-                  <Calendar className="h-3 w-3 text-blue-600 shrink-0" />
+                  <Calendar className="h-3 w-3 text-slate-500 shrink-0" />
                   <span>
-                    Starts: {new Date(selectedProgramObj.startDate).toLocaleDateString(undefined, {
+                    Session Date: {new Date(selectedProgramObj.startDate).toLocaleDateString(undefined, {
                       year: "numeric",
                       month: "short",
                       day: "numeric",
@@ -302,10 +273,7 @@ export default function RegistrationForm({
           )}
 
           {errors.program && (
-            <p
-              id="program-error"
-              className="mt-1.5 flex items-center gap-1.5 text-xs font-semibold text-red-600"
-            >
+            <p id="program-error" className="mt-1.5 flex items-center gap-1 text-xs text-red-600">
               <AlertCircle className="h-3.5 w-3.5 shrink-0" />
               <span>{errors.program}</span>
             </p>
@@ -316,32 +284,27 @@ export default function RegistrationForm({
         <div>
           <label
             htmlFor="full-name"
-            className="block text-xs sm:text-sm font-bold text-slate-700 mb-1.5"
+            className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1.5"
           >
-            Full Name <span className="text-red-500">*</span>
+            Full Name (For Certificate) <span className="text-red-500">*</span>
           </label>
           <input
             id="full-name"
             type="text"
             name="name"
-            placeholder="Enter your full name"
+            placeholder="e.g. John Doe (exactly as it should appear on certificate)"
             value={formData.name}
             onChange={handleChange}
             onBlur={handleBlur}
             disabled={isSubmitting}
             aria-invalid={!!errors.name}
             aria-describedby={errors.name ? "name-error" : undefined}
-            className={`w-full min-h-[48px] rounded-xl border bg-white px-4 py-3 text-sm sm:text-base text-slate-900 placeholder:text-slate-400 transition-all focus:outline-none focus:ring-2 ${
-              errors.name
-                ? "border-red-300 focus:border-red-500 focus:ring-red-200"
-                : "border-slate-300 focus:border-blue-500 focus:ring-blue-100"
+            className={`w-full min-h-[44px] rounded-lg border bg-white px-3.5 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 transition-colors focus:ring-2 focus:ring-slate-900/10 focus:border-slate-800 ${
+              errors.name ? "border-red-300" : "border-slate-300 hover:border-slate-400"
             }`}
           />
           {errors.name && (
-            <p
-              id="name-error"
-              className="mt-1.5 flex items-center gap-1.5 text-xs font-semibold text-red-600"
-            >
+            <p id="name-error" className="mt-1.5 flex items-center gap-1 text-xs text-red-600">
               <AlertCircle className="h-3.5 w-3.5 shrink-0" />
               <span>{errors.name}</span>
             </p>
@@ -350,39 +313,39 @@ export default function RegistrationForm({
 
         {/* EMAIL ADDRESS */}
         <div>
-          <div className="flex items-center justify-between mb-1.5">
-            <label
-              htmlFor="email-address"
-              className="block text-xs sm:text-sm font-bold text-slate-700"
-            >
-              Email Address <span className="text-red-500">*</span>
-            </label>
-            <span className="text-[11px] font-medium text-slate-500">
-              (Must match your LMS account email)
-            </span>
-          </div>
+          <label
+            htmlFor="email-address"
+            className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1.5"
+          >
+            Email Address <span className="text-red-500">*</span>
+          </label>
           <input
             id="email-address"
             type="email"
             name="email"
-            placeholder="Enter your email address"
+            placeholder="your.email@example.com"
             value={formData.email}
             onChange={handleChange}
             onBlur={handleBlur}
             disabled={isSubmitting}
             aria-invalid={!!errors.email}
             aria-describedby={errors.email ? "email-error" : undefined}
-            className={`w-full min-h-[48px] rounded-xl border bg-white px-4 py-3 text-sm sm:text-base text-slate-900 placeholder:text-slate-400 transition-all focus:outline-none focus:ring-2 ${
-              errors.email
-                ? "border-red-300 focus:border-red-500 focus:ring-red-200"
-                : "border-slate-300 focus:border-blue-500 focus:ring-blue-100"
+            className={`w-full min-h-[44px] rounded-lg border bg-white px-3.5 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 transition-colors focus:ring-2 focus:ring-slate-900/10 focus:border-slate-800 ${
+              errors.email ? "border-red-300" : "border-slate-300 hover:border-slate-400"
             }`}
           />
+
+          {/* Clear sequential email guidance with amber highlight */}
+          <div className="mt-2 rounded-lg border border-amber-200 bg-amber-50/80 p-2.5 text-xs text-amber-900 leading-normal flex items-start gap-2">
+            <Info className="h-4 w-4 text-amber-700 shrink-0 mt-0.5" />
+            <div>
+              <strong className="font-semibold text-amber-950">Certificate Delivery: </strong>
+              Enter your active email address. <strong>After submitting this form</strong>, you will use this same email to sign in to the QNAYDS LMS and download your certificate.
+            </div>
+          </div>
+
           {errors.email && (
-            <p
-              id="email-error"
-              className="mt-1.5 flex items-center gap-1.5 text-xs font-semibold text-red-600"
-            >
+            <p id="email-error" className="mt-1.5 flex items-center gap-1 text-xs text-red-600">
               <AlertCircle className="h-3.5 w-3.5 shrink-0" />
               <span>{errors.email}</span>
             </p>
@@ -393,32 +356,30 @@ export default function RegistrationForm({
         <div>
           <label
             htmlFor="phone-number"
-            className="block text-xs sm:text-sm font-bold text-slate-700 mb-1.5"
+            className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1.5"
           >
-            Phone Number <span className="text-red-500">*</span>
+            WhatsApp / Contact Phone <span className="text-red-500">*</span>
           </label>
           <input
             id="phone-number"
             type="tel"
             name="phone"
-            placeholder="+91 9876543210"
+            placeholder="+91 98765 43210"
             value={formData.phone}
             onChange={handleChange}
             onBlur={handleBlur}
             disabled={isSubmitting}
             aria-invalid={!!errors.phone}
             aria-describedby={errors.phone ? "phone-error" : undefined}
-            className={`w-full min-h-[48px] rounded-xl border bg-white px-4 py-3 text-sm sm:text-base text-slate-900 placeholder:text-slate-400 transition-all focus:outline-none focus:ring-2 ${
-              errors.phone
-                ? "border-red-300 focus:border-red-500 focus:ring-red-200"
-                : "border-slate-300 focus:border-blue-500 focus:ring-blue-100"
+            className={`w-full min-h-[44px] rounded-lg border bg-white px-3.5 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 transition-colors focus:ring-2 focus:ring-slate-900/10 focus:border-slate-800 ${
+              errors.phone ? "border-red-300" : "border-slate-300 hover:border-slate-400"
             }`}
           />
+          <p className="mt-1 text-[11px] text-slate-400">
+            For certificate delivery updates and support if required.
+          </p>
           {errors.phone && (
-            <p
-              id="phone-error"
-              className="mt-1.5 flex items-center gap-1.5 text-xs font-semibold text-red-600"
-            >
+            <p id="phone-error" className="mt-1.5 flex items-center gap-1 text-xs text-red-600">
               <AlertCircle className="h-3.5 w-3.5 shrink-0" />
               <span>{errors.phone}</span>
             </p>
@@ -430,30 +391,30 @@ export default function RegistrationForm({
           <button
             type="submit"
             disabled={isSubmitting || loadingPrograms}
-            className={`inline-flex min-h-[50px] w-full items-center justify-center gap-2 rounded-full px-6 py-4 text-base font-bold text-white shadow-lg transition-all duration-200 ${
+            className={`inline-flex min-h-[46px] w-full items-center justify-center gap-2 rounded-lg px-5 py-3 text-sm font-semibold text-white transition-all cursor-pointer ${
               isSubmitting || loadingPrograms
-                ? "cursor-not-allowed bg-blue-400 opacity-80"
-                : "bg-blue-600 shadow-blue-500/30 hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-xl active:translate-y-0"
+                ? "bg-slate-400 cursor-not-allowed opacity-80"
+                : "bg-slate-900 hover:bg-slate-800 active:scale-[0.99] shadow-xs"
             }`}
           >
             {isSubmitting ? (
               <>
-                <Loader2 className="h-5 w-5 animate-spin" />
-                <span>Registering...</span>
+                <Loader2 className="h-4 w-4 animate-spin text-white" />
+                <span>Recording Attendance...</span>
               </>
             ) : (
               <>
-                <span>Register Now</span>
-                <ArrowRight className="h-5 w-5" />
+                <span>Submit Attendance &amp; Claim Certificate</span>
+                <ArrowRight className="h-4 w-4" />
               </>
             )}
           </button>
         </div>
 
-        {/* Social Proof Note */}
-        <div className="flex items-center justify-center gap-2 pt-1 text-center text-xs text-slate-500">
-          <CheckCircle2 className="h-4 w-4 text-emerald-500 shrink-0" />
-          <span>Over 450+ learners registered across programs this month</span>
+        {/* Trust & Privacy Notice */}
+        <div className="flex items-center justify-center gap-1.5 text-center text-[11px] text-slate-400 pt-1">
+          <ShieldCheck className="h-3.5 w-3.5 text-slate-400" />
+          <span>Official QNAYDS Certificate Verification • Synced with LMS Database</span>
         </div>
       </form>
     </div>

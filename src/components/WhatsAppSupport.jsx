@@ -3,7 +3,7 @@ import { ArrowRight, ShieldCheck, Clock } from "lucide-react";
 export default function WhatsAppSupport() {
   const whatsappPhone = "919074871204";
   const whatsappMessage =
-    "Hi QNAYDS Team, I need help regarding external program registration and LMS certificate access.";
+    "Hi QNAYDS Team, I attended a program and need help claiming my certificate on the LMS.";
 
   const whatsappUrl = `https://api.whatsapp.com/send/?phone=${whatsappPhone}&text=${encodeURIComponent(
     whatsappMessage
@@ -25,11 +25,11 @@ export default function WhatsAppSupport() {
               </div>
 
               <h2 className="mt-4 text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-                Need Help with Registration or Certificates?
+                Need Help Claiming Your Certificate?
               </h2>
 
               <p className="mt-3 text-sm sm:text-base text-slate-600 leading-relaxed">
-                Have questions about program schedules, trouble submitting your
+                Have questions about your session attendance, trouble submitting your
                 details, or need help claiming your certificate on the LMS? Chat
                 directly with our support team on WhatsApp.
               </p>

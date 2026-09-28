@@ -3,28 +3,28 @@ import { UserCheck, KeyRound, Rocket, Award, ExternalLink, AlertCircle } from "l
 const steps = [
   {
     step: "01",
-    icon: UserCheck,
-    title: "1. Register for Program",
-    desc: "Select your program from the dropdown above, enter your full name, email, and phone number, and click 'Register Now'.",
+    icon: Rocket,
+    title: "1. Attend Your Program",
+    desc: "Participate in the offline college workshop, live webinar, or technical internship organized by QNAYDS.",
   },
   {
     step: "02",
-    icon: KeyRound,
-    title: "2. Create LMS Account",
-    desc: "Visit the QNAYDS LMS portal (lms.qnayds.in/register) and register using the EXACT same email address you used in this form.",
-    highlight: "Crucial: Use the same email to automatically sync your program record.",
+    icon: UserCheck,
+    title: "2. Submit Attendance",
+    desc: "Use the link provided by your tutor at the end of the session to record your completed program and name.",
   },
   {
     step: "03",
-    icon: Rocket,
-    title: "3. Complete Activities",
-    desc: "Attend the live sessions, interactive tasks, workshop assignments, or internship milestones as instructed.",
+    icon: KeyRound,
+    title: "3. Create LMS Account",
+    desc: "Visit the QNAYDS LMS portal (lms.qnayds.in/register) and register using the EXACT same email address you used in this form.",
+    highlight: "Crucial: Use the same email to automatically link your certificate to your student dashboard.",
   },
   {
     step: "04",
     icon: Award,
-    title: "4. View Certificate",
-    desc: "Once completion conditions are met, navigate to the 'Certificates' section in your LMS dashboard to view and claim your certificate.",
+    title: "4. Download Certificate",
+    desc: "Navigate to the 'Certificates' section in your LMS dashboard to view, verify, and download your official credential.",
   },
 ];
 
@@ -42,7 +42,7 @@ export default function HowItWorks() {
             How to Get Your Certificate
           </h2>
           <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed">
-            Follow these simple steps from registration to claiming your verified
+            Follow these simple steps from submitting your attendance to claiming your verified
             certificate in the official QNAYDS Learning Management System.
           </p>
         </div>

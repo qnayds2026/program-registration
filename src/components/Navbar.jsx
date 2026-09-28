@@ -33,7 +33,7 @@ export default function Navbar({ onRegisterClick }) {
             onClick={(e) => handleNavClick(e, "register")}
             className="text-sm font-semibold text-slate-600 hover:text-blue-600 transition-colors"
           >
-            Register
+            Claim Certificate
           </a>
           <a
             href="#certificate-guide"
@@ -52,14 +52,14 @@ export default function Navbar({ onRegisterClick }) {
           </a>
         </nav>
 
-        {/* Register CTA Button */}
+        {/* Claim Certificate CTA Button */}
         <div className="hidden md:flex items-center gap-4">
           <button
             type="button"
             onClick={onRegisterClick}
-            className="inline-flex items-center justify-center gap-2 rounded-full bg-blue-600 px-5 py-2.5 text-sm font-bold text-white shadow-md shadow-blue-500/20 transition-all duration-200 hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/30"
+            className="inline-flex items-center justify-center gap-2 rounded-full bg-blue-600 px-5 py-2.5 text-sm font-bold text-white shadow-md shadow-blue-500/20 transition-all duration-200 hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/30 cursor-pointer"
           >
-            <span>Register Now</span>
+            <span>Claim Certificate</span>
             <ArrowRight className="h-4 w-4" />
           </button>
         </div>
@@ -84,7 +84,7 @@ export default function Navbar({ onRegisterClick }) {
             onClick={(e) => handleNavClick(e, "register")}
             className="block rounded-lg px-3 py-2 text-base font-semibold text-slate-700 hover:bg-slate-50 hover:text-blue-600"
           >
-            Register
+            Claim Certificate
           </a>
           <a
             href="#certificate-guide"
@@ -111,7 +111,7 @@ export default function Navbar({ onRegisterClick }) {
               }}
               className="flex w-full items-center justify-center gap-2 rounded-full bg-blue-600 px-5 py-3 text-sm font-bold text-white shadow-md shadow-blue-500/20 hover:bg-blue-700"
             >
-              <span>Register Now</span>
+              <span>Claim Certificate</span>
               <ArrowRight className="h-4 w-4" />
             </button>
           </div>
